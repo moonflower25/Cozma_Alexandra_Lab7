@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite;
 
 namespace Cozma_Alexandra_Lab7.Models
 {
@@ -16,6 +16,5 @@ namespace Cozma_Alexandra_Lab7.Models
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
-
     }
 }

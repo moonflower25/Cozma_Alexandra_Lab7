@@ -12,7 +12,9 @@ namespace Cozma_Alexandra_Lab7.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+
         public string Description { get; set; }
+
         [OneToMany]
         public List<ListProduct> ListProducts { get; set; }
     }

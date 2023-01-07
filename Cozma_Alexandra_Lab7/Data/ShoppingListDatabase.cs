@@ -20,7 +20,7 @@ namespace Cozma_Alexandra_Lab7.Data
             _database.CreateTableAsync<ListProduct>().Wait();
 
         }
-     
+
         public Task<List<ShopList>> GetShopListsAsync()
         {
             return _database.Table<ShopList>().ToListAsync();
@@ -28,10 +28,9 @@ namespace Cozma_Alexandra_Lab7.Data
         public Task<ShopList> GetShopListAsync(int id)
         {
             return _database.Table<ShopList>()
-            .Where(i => i.ID == id)
-           .FirstOrDefaultAsync();
+                            .Where(i => i.ID == id)
+                            .FirstOrDefaultAsync();
         }
-
         public Task<int> SaveShopListAsync(ShopList slist)
         {
             if (slist.ID != 0)
@@ -59,7 +58,6 @@ namespace Cozma_Alexandra_Lab7.Data
                 return _database.InsertAsync(product);
             }
         }
-
         public Task<int> DeleteProductAsync(Product product)
         {
             return _database.DeleteAsync(product);
@@ -68,7 +66,7 @@ namespace Cozma_Alexandra_Lab7.Data
         {
             return _database.Table<Product>().ToListAsync();
         }
-    }
+
         public Task<int> SaveListProductAsync(ListProduct listp)
         {
             if (listp.ID != 0)
@@ -88,6 +86,6 @@ namespace Cozma_Alexandra_Lab7.Data
             + " on P.ID = LP.ProductID where LP.ShopListID = ?",
             shoplistid);
         }
-
+    }
 }
 

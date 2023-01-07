@@ -12,8 +12,10 @@ namespace Cozma_Alexandra_Lab7.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
+
         [ForeignKey(typeof(ShopList))]
         public int ShopListID { get; set; }
+
         public int ProductID { get; set; }
     }
 }

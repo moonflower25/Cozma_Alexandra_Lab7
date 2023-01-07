@@ -28,6 +28,7 @@ public partial class ProductPage : ContentPage
         base.OnAppearing();
         listView.ItemsSource = await App.Database.GetProductsAsync();
     }
+
     async void OnAddButtonClicked(object sender, EventArgs e)
     {
         Product p;
