@@ -4,8 +4,8 @@ namespace Cozma_Alexandra_Lab7;
 
 public partial class ProductPage : ContentPage
 {
-    ShopList sl;
-    public ProductPage(ShopList slist)
+    Shop sl;
+    public ProductPage(Shop slist)
     {
         InitializeComponent();
         sl = slist;

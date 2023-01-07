@@ -2,9 +2,9 @@ using Cozma_Alexandra_Lab7.Models;
 
 namespace Cozma_Alexandra_Lab7;
 
-public partial class ListEntryPage : ContentPage
+public partial class ShopEntryPage : ContentPage
 {
-	public ListEntryPage()
+	public ShopEntryPage()
 	{
 		InitializeComponent();
 	}
@@ -12,24 +12,26 @@ public partial class ListEntryPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-
-        listView.ItemsSource = await App.Database.GetShopListsAsync();
+        listView.ItemsSource = await App.Database.GetShopsAsync();
     }
-    async void OnShopListAddedClicked(object sender, EventArgs e)
+
+    async void OnShopAddedClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ListPage
+        await Navigation.PushAsync(new ShopPage
         {
             BindingContext = new Shop()
         });
     }
+
     async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         if (e.SelectedItem != null)
         {
-            await Navigation.PushAsync(new ListPage
+            await Navigation.PushAsync(new ShopPage
             {
                 BindingContext = e.SelectedItem as Shop
             });
         }
     }
+
 }

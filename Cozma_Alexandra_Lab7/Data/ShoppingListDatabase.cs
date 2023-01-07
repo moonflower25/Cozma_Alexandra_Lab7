@@ -15,24 +15,24 @@ namespace Cozma_Alexandra_Lab7.Data
         public ShoppingListDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<ShopList>().Wait();
+            _database.CreateTableAsync<Shop>().Wait();
             _database.CreateTableAsync<Product>().Wait();
             _database.CreateTableAsync<ListProduct>().Wait();
+            _database.CreateTableAsync<Shop>().Wait();
+        }
 
-        }
-     
-        public Task<List<ShopList>> GetShopListsAsync()
+        public Task<List<Shop>> GetShopListsAsync()
         {
-            return _database.Table<ShopList>().ToListAsync();
+            return _database.Table<Shop>().ToListAsync();
         }
-        public Task<ShopList> GetShopListAsync(int id)
+        public Task<Shop> GetShopListAsync(int id)
         {
-            return _database.Table<ShopList>()
+            return _database.Table<Shop>()
             .Where(i => i.ID == id)
            .FirstOrDefaultAsync();
         }
 
-        public Task<int> SaveShopListAsync(ShopList slist)
+        public Task<int> SaveShopListAsync(Shop slist)
         {
             if (slist.ID != 0)
             {
@@ -43,7 +43,7 @@ namespace Cozma_Alexandra_Lab7.Data
                 return _database.InsertAsync(slist);
             }
         }
-        public Task<int> DeleteShopListAsync(ShopList slist)
+        public Task<int> DeleteShopListAsync(Shop slist)
         {
             return _database.DeleteAsync(slist);
         }
@@ -68,7 +68,7 @@ namespace Cozma_Alexandra_Lab7.Data
         {
             return _database.Table<Product>().ToListAsync();
         }
-    }
+
         public Task<int> SaveListProductAsync(ListProduct listp)
         {
             if (listp.ID != 0)
@@ -89,5 +89,21 @@ namespace Cozma_Alexandra_Lab7.Data
             shoplistid);
         }
 
+        public Task<List<Shop>> GetShopsAsync()
+        {
+            return _database.Table<Shop>().ToListAsync();
+        }
+        public Task<int> SaveShopAsync(Shop shop)
+        {
+            if (shop.ID != 0)
+            {
+                return _database.UpdateAsync(shop);
+            }
+            else
+            {
+                return _database.InsertAsync(shop);
+            }
+        }
+    }
 }
 
